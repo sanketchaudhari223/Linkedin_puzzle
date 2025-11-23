@@ -15,8 +15,8 @@ original = cv.imread(img)
 #original[100,159:169]
 
 
-img_width = original.shape[0] 
-img_height = original.shape[1]
+img_width = original.shape[1] 
+img_height = original.shape[0]
 m_row = 7
 m_col = 7
 new_dimensions = (10, 10)
@@ -81,19 +81,22 @@ print(start_row,start_col)
 print(color_mat)
 
 while i < m_col :
-        while j < m_row :
-            if tuple(original[it_row][it_col]) not in color_dict:
-                color_dict[tuple(original[it_row][it_col])] = paint_color
-                paint_color = paint_color + 1
-            color_mat[i][j] = color_dict[tuple(original[it_row][it_col])]
-            it_col = it_col + step_col
-            j = j + 1
-        it_col = start_col
-        j = 0
-        it_row = it_row + step_row
-        i = i + 1
+    
+    while j < m_row :
+        #print(it_row,it_col)
+        #print(original[it_row][it_col])
+        if tuple(original[it_row][it_col]) not in color_dict:
+            color_dict[tuple(original[it_row][it_col])] = paint_color
+            paint_color = paint_color + 1
+        color_mat[i][j] = color_dict[tuple(original[it_row][it_col])]
+        it_col = it_col + step_col
+        j = j + 1
+    it_col = start_col
+    j = 0
+    it_row = it_row + step_row
+    i = i + 1
         
-        i,j = 0,0
+i,j = 0,0
 #paint_color = 10 #paint_color - 1
 color_taken = np.zeros(paint_color,dtype=int)
 ans_mat = np.zeros((m_row, m_col), dtype=int)
